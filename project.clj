@@ -13,14 +13,14 @@
   :source-paths ["src"]
 
   :aliases {"fig"       ["trampoline" "run" "-m" "figwheel.main"]
-            "fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
+            :dev #_"fig:build" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]
             "fig:min"   ["run" "-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]
-            "fig:test"  ["run" "-m" "figwheel.main" "-co" "test.cljs.edn" "-m" "tictactoe.test-runner"]}
+            "fig:test"  ["run" "-m" "figwheel.main" "-co" "test.cljs.edn" "-m" "tictactoe.test-runner"]
+            #_:dev #_{:main-opts ["-m" "figwheel.main" "-b" "dev" "-r"]}}
 
   :profiles {:dev {:dependencies [[com.bhauman/figwheel-main "0.2.12"]
                                   [com.bhauman/rebel-readline-cljs "0.1.4"]]
-                   
+
                    :resource-paths ["target"]
                    ;; need to add the compiled assets to the :clean-targets
                    :clean-targets ^{:protect false} ["target"]}})
-
